@@ -69,7 +69,7 @@ export const NotesProvider = ({ children }: NotesProviderProps) => {
     });
 
     return () => unsubscribe();
-  }, [user]);
+  }, [user, isFetchingUser]);
 
   return (
     <NotesContext.Provider
