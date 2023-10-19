@@ -10,6 +10,7 @@ import { auth } from "../firebase/config";
 
 type UserContextType = {
   user: User | null;
+  isFetching: boolean;
   isSigningIn: boolean;
   isSigningOut: boolean;
   signInAsGuest: () => Promise<void>;
@@ -18,6 +19,7 @@ type UserContextType = {
 
 const UserContext = createContext<UserContextType>({
   user: null,
+  isFetching: true,
   isSigningIn: false,
   isSigningOut: false,
   signInAsGuest: async () => {},
@@ -38,6 +40,7 @@ type UserProviderProps = {
 
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isFetching, setIsFetching] = useState(true);
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
 
@@ -80,13 +83,21 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         // User is signed out
         setUser(null);
       }
+      setIsFetching(false);
     });
     return unsubscribe;
   }, []);
 
   return (
     <UserContext.Provider
-      value={{ user, isSigningIn, isSigningOut, signInAsGuest, signOutAsGuest }}
+      value={{
+        user,
+        isSigningIn,
+        isSigningOut,
+        isFetching,
+        signInAsGuest,
+        signOutAsGuest,
+      }}
     >
       {children}
     </UserContext.Provider>

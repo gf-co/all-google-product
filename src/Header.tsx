@@ -25,8 +25,14 @@ import { useUser } from "./contexts/UserProvider";
 import { View, useView } from "./contexts/ViewProvider";
 
 export default function Header() {
-  const { user, isSigningIn, isSigningOut, signInAsGuest, signOutAsGuest } =
-    useUser();
+  const {
+    user,
+    isSigningIn,
+    isSigningOut,
+    isFetching,
+    signInAsGuest,
+    signOutAsGuest,
+  } = useUser();
   const { view, setView } = useView();
   const { mode, setMode } = useColorScheme();
   const [keyword, setKeyword] = useState("");
@@ -125,11 +131,13 @@ export default function Header() {
                 </Menu>
               </Dropdown>
             )}
+
             {!user && (
               <Button
                 variant="outlined"
                 loading={isSigningIn}
                 onClick={signInAsGuest}
+                disabled={isFetching}
               >
                 Guest sign in
               </Button>

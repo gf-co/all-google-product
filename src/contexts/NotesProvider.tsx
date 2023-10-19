@@ -38,12 +38,16 @@ type NotesProviderProps = {
 };
 
 export const NotesProvider = ({ children }: NotesProviderProps) => {
-  const { user } = useUser();
+  const { user, isFetching: isFetchingUser } = useUser();
   const [notes, setNotes] = useState<Note[]>([]);
   const [originalList, setOriginalList] = useState<Note[]>([]);
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
+    if (isFetchingUser) {
+      return;
+    }
+
     if (!user) {
       setIsFetching(false);
       setNotes([]);
