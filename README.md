@@ -1,16 +1,11 @@
-# Next.js with Supabase
+# All Google Product
 
-- A React app to demo Supabase's capabilities.
-- Using tools with no vendor lock-in.
+- A React app to demo Firebase's capabilities built with tools made by Google.
 
 ## Built with
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Jest
-- Cypress
-- MDX (Lets you write pages using Markdown.)
+- Firebase
+- MUI
 
 ## Live Demo
 
