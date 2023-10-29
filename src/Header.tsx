@@ -70,11 +70,53 @@ export default function Header() {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Link href="#" level="h3" marginRight={2}>
-            Keep
-          </Link>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Link
+              href="https://www.linkedin.com/in/gf-co/"
+              level="body-md"
+              marginRight={2}
+              sx={{
+                [theme.breakpoints.down("md")]: {
+                  display: "none",
+                },
+              }}
+            >
+              LinkedIn
+            </Link>
+            <Link
+              href="https://gf-co.github.io/"
+              level="body-md"
+              marginRight={2}
+              sx={{
+                [theme.breakpoints.down("sm")]: {
+                  display: "none",
+                },
+              }}
+            >
+              Portfolio
+            </Link>
+            <Link
+              href="https://github.com/gf-co/all-google-product"
+              level="body-md"
+              marginRight={2}
+              sx={{
+                whiteSpace: "nowrap",
+              }}
+            >
+              Source Code
+            </Link>
+          </Stack>
 
-          <Stack direction="row" spacing={2} alignItems="center">
+          <Stack
+            direction="row"
+            spacing={2}
+            marginLeft="auto"
+            alignItems="center"
+          >
             <Input
               placeholder="Search"
               value={keyword}
