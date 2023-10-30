@@ -77,6 +77,8 @@ export default function Header() {
           >
             <Link
               href="https://www.linkedin.com/in/gf-co/"
+              rel="noopener noreferrer"
+              target="_blank"
               level="body-md"
               marginRight={2}
               sx={{
@@ -89,6 +91,8 @@ export default function Header() {
             </Link>
             <Link
               href="https://gf-co.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
               level="body-md"
               marginRight={2}
               sx={{
@@ -101,6 +105,8 @@ export default function Header() {
             </Link>
             <Link
               href="https://github.com/gf-co/all-google-product"
+              target="_blank"
+              rel="noopener noreferrer"
               level="body-md"
               marginRight={2}
               sx={{
