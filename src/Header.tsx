@@ -2,18 +2,7 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import ViewAgendaOutlinedIcon from "@mui/icons-material/ViewAgendaOutlined";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Input,
-  Link,
-  Stack,
-  Tooltip,
-  useTheme,
-} from "@mui/joy";
+import { Avatar, Box, Button, Container, IconButton, Input, Link, Stack, Tooltip, useTheme } from "@mui/joy";
 import Dropdown from "@mui/joy/Dropdown";
 import Menu from "@mui/joy/Menu";
 import MenuButton from "@mui/joy/MenuButton";
@@ -25,14 +14,7 @@ import { useUser } from "./contexts/UserProvider";
 import { View, useView } from "./contexts/ViewProvider";
 
 export default function Header() {
-  const {
-    user,
-    isSigningIn,
-    isSigningOut,
-    isFetching,
-    signInAsGuest,
-    signOutAsGuest,
-  } = useUser();
+  const { user, isSigningIn, isSigningOut, isFetching, signInAsGuest, signOutAsGuest } = useUser();
   const { view, setView } = useView();
   const { mode, setMode } = useColorScheme();
   const [keyword, setKeyword] = useState("");
@@ -53,11 +35,7 @@ export default function Header() {
       return;
     }
 
-    const filteredList = originalList.filter(
-      (note) =>
-        note.title.toLowerCase().includes(newKeyword.toLowerCase()) ||
-        note.content.toLowerCase().includes(newKeyword.toLowerCase())
-    );
+    const filteredList = originalList.filter((note) => note.title.toLowerCase().includes(newKeyword.toLowerCase()) || note.content.toLowerCase().includes(newKeyword.toLowerCase()));
 
     setNotes(filteredList);
   };
@@ -65,30 +43,8 @@ export default function Header() {
   return (
     <Box>
       <Container maxWidth="md">
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Link
-              href="https://www.linkedin.com/in/gf-co/"
-              rel="noopener noreferrer"
-              target="_blank"
-              level="body-md"
-              marginRight={2}
-              sx={{
-                [theme.breakpoints.down("md")]: {
-                  display: "none",
-                },
-              }}
-            >
-              LinkedIn
-            </Link>
+        <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Link
               href="https://gf-co.github.io/"
               target="_blank"
@@ -117,12 +73,7 @@ export default function Header() {
             </Link>
           </Stack>
 
-          <Stack
-            direction="row"
-            spacing={2}
-            marginLeft="auto"
-            alignItems="center"
-          >
+          <Stack direction="row" spacing={2} marginLeft="auto" alignItems="center">
             <Input
               placeholder="Search"
               value={keyword}
@@ -167,11 +118,7 @@ export default function Header() {
 
             {!!user && (
               <Dropdown>
-                <MenuButton
-                  loading={isSigningOut}
-                  sx={{ padding: 0 }}
-                  variant="plain"
-                >
+                <MenuButton loading={isSigningOut} sx={{ padding: 0 }} variant="plain">
                   <Avatar variant="outlined" />
                 </MenuButton>
                 <Menu>
@@ -181,12 +128,7 @@ export default function Header() {
             )}
 
             {!user && (
-              <Button
-                variant="outlined"
-                loading={isSigningIn}
-                onClick={signInAsGuest}
-                disabled={isFetching}
-              >
+              <Button variant="outlined" loading={isSigningIn} onClick={signInAsGuest} disabled={isFetching}>
                 Guest sign in
               </Button>
             )}
